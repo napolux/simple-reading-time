@@ -1,0 +1,59 @@
+{
+  "name": "@napolux/simple-reading-time",
+  "version": "0.1.0",
+  "description": "TypeScript utility to estimate reading time of plain text, HTML, and Markdown content",
+  "license": "MIT",
+  "main": "dist/index.js",
+  "module": "dist/index.esm.js",
+  "types": "dist/index.d.ts",
+  "exports": {
+    ".": {
+      "import": {
+        "types": "./dist/index.d.ts",
+        "default": "./dist/index.esm.js"
+      },
+      "require": {
+        "types": "./dist/index.d.ts",
+        "default": "./dist/index.js"
+      }
+    }
+  },
+  "files": [
+    "dist/",
+    "README.md"
+  ],
+  "keywords": [
+    "reading-time",
+    "read-time",
+    "estimate",
+    "words",
+    "wpm",
+    "html",
+    "markdown",
+    "typescript"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/napolux/simple-reading-time.git"
+  },
+  "scripts": {
+    "build": "tsup",
+    "clean": "rm -rf dist",
+    "prepublishOnly": "npm run clean && npm run build",
+    "prepare": "husky"
+  },
+  "devDependencies": {
+    "@commitlint/cli": "^20.4.4",
+    "@commitlint/config-conventional": "^20.4.4",
+    "husky": "^9.1.7",
+    "lint-staged": "^16.4.0",
+    "prettier": "^3.8.1",
+    "tsup": "^8.5.1",
+    "typescript": "^5.9.3"
+  },
+  "dependencies": {
+    "remark": "^15.0.0",
+    "strip-markdown": "^6.0.0",
+    "striptags": "^3.2.0"
+  }
+}
