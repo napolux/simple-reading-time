@@ -12,6 +12,30 @@ import stripMarkdown from "strip-markdown";
 export type ContentFormat = "plain" | "html" | "markdown";
 
 /**
+ * Supported locale codes for the human-readable `text` field.
+ *
+ * - `"en_US"` - English (default): "3 min read"
+ * - `"it_IT"` - Italian: "3 min di lettura"
+ * - `"fr_FR"` - French: "3 min de lecture"
+ * - `"de_DE"` - German: "3 Min. Lesezeit"
+ * - `"es_ES"` - Spanish: "3 min de lectura"
+ */
+export type SupportedLocale = "en_US" | "it_IT" | "fr_FR" | "de_DE" | "es_ES";
+
+/**
+ * Locale templates for the human-readable reading time string.
+ * The `{minutes}` placeholder is replaced with the computed value.
+ * @internal
+ */
+const LOCALE_TEMPLATES: Record<SupportedLocale, string> = {
+  en_US: "{minutes} min read",
+  it_IT: "{minutes} min di lettura",
+  fr_FR: "{minutes} min de lecture",
+  de_DE: "{minutes} Min. Lesezeit",
+  es_ES: "{minutes} min de lectura",
+};
+
+/**
  * Options for the {@link readingTime} function.
  *
  * @example
@@ -37,6 +61,19 @@ export interface ReadingTimeOptions {
    * - `"markdown"` -strips Markdown syntax.
    */
   format?: ContentFormat;
+
+  /**
+   * Locale for the human-readable `text` field. Defaults to `"en_US"`.
+   *
+   * Supported values: `"en_US"`, `"it_IT"`, `"fr_FR"`, `"de_DE"`, `"es_ES"`.
+   *
+   * @example
+   * ```ts
+   * readingTime("some text", { locale: "it_IT" });
+   * // => { ..., text: "1 min di lettura" }
+   * ```
+   */
+  locale?: SupportedLocale;
 }
 
 /**
@@ -127,13 +164,22 @@ function countWords(text: string): number {
  * ```ts
  * const result = readingTime("some text", { wordsPerMinute: 250 });
  * ```
+ *
+ * @example Localized output
+ * ```ts
+ * const result = readingTime("some text", { locale: "it_IT" });
+ * // => { ..., text: "1 min di lettura" }
+ * ```
  */
 export function readingTime(
   text: string,
   options: ReadingTimeOptions = {},
 ): ReadingTimeResult {
-  const { wordsPerMinute = DEFAULT_WORDS_PER_MINUTE, format = "plain" } =
-    options;
+  const {
+    wordsPerMinute = DEFAULT_WORDS_PER_MINUTE,
+    format = "plain",
+    locale = "en_US",
+  } = options;
 
   let processedText = text;
 
@@ -151,6 +197,6 @@ export function readingTime(
     minutes,
     seconds,
     words,
-    text: `${minutes} min read`,
+    text: LOCALE_TEMPLATES[locale].replace("{minutes}", String(minutes)),
   };
 }

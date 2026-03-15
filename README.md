@@ -46,6 +46,22 @@ const result = readingTime("some text", { wordsPerMinute: 250 });
 // => { minutes: 1, seconds: 0, words: 2, text: "1 min read" }
 ```
 
+### Localized output
+
+```ts
+readingTime("du texte en francais", { locale: "fr_FR" });
+// => { minutes: 1, seconds: 1, words: 4, text: "1 min de lecture" }
+
+readingTime("un testo in italiano", { locale: "it_IT" });
+// => { minutes: 1, seconds: 1, words: 4, text: "1 min di lettura" }
+
+readingTime("ein deutscher Text", { locale: "de_DE" });
+// => { minutes: 1, seconds: 1, words: 3, text: "1 Min. Lesezeit" }
+
+readingTime("un texto en espanol", { locale: "es_ES" });
+// => { minutes: 1, seconds: 1, words: 4, text: "1 min de lectura" }
+```
+
 ### Next.js blog post component
 
 ```tsx
@@ -78,6 +94,7 @@ export default function BlogPost({ title, content }: BlogPostProps) {
 | `text`                   | `string`                              | -         | The content to analyze.            |
 | `options.wordsPerMinute` | `number`                              | `200`     | Reading speed in words per minute. |
 | `options.format`         | `"plain"` \| `"html"` \| `"markdown"` | `"plain"` | Content format for preprocessing.  |
+| `options.locale`         | `SupportedLocale`                     | `"en_US"` | Locale for the `text` field.       |
 
 ### `ReadingTimeResult`
 
@@ -91,6 +108,18 @@ export default function BlogPost({ title, content }: BlogPostProps) {
 ### `DEFAULT_WORDS_PER_MINUTE`
 
 Exported constant equal to `200`.
+
+### `SupportedLocale`
+
+Union type of supported locale codes:
+
+| Locale    | Language | Example output       |
+| --------- | -------- | -------------------- |
+| `"en_US"` | English  | `"3 min read"`       |
+| `"it_IT"` | Italian  | `"3 min di lettura"` |
+| `"fr_FR"` | French   | `"3 min de lecture"` |
+| `"de_DE"` | German   | `"3 Min. Lesezeit"`  |
+| `"es_ES"` | Spanish  | `"3 min de lectura"` |
 
 ## Works everywhere
 
