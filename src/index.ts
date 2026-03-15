@@ -5,9 +5,9 @@ import stripMarkdown from "strip-markdown";
 /**
  * Supported content formats for preprocessing before word counting.
  *
- * - `"plain"` — no preprocessing, raw text is counted as-is.
- * - `"html"` — HTML tags are stripped before counting words.
- * - `"markdown"` — Markdown syntax is removed before counting words.
+ * - `"plain"` -no preprocessing, raw text is counted as-is.
+ * - `"html"` -HTML tags are stripped before counting words.
+ * - `"markdown"` -Markdown syntax is removed before counting words.
  */
 export type ContentFormat = "plain" | "html" | "markdown";
 
@@ -32,9 +32,9 @@ export interface ReadingTimeOptions {
    * The format of the input content. Determines how the text is preprocessed
    * before word counting.
    *
-   * - `"plain"` (default) — no preprocessing.
-   * - `"html"` — strips HTML tags.
-   * - `"markdown"` — strips Markdown syntax.
+   * - `"plain"` (default) -no preprocessing.
+   * - `"html"` -strips HTML tags.
+   * - `"markdown"` -strips Markdown syntax.
    */
   format?: ContentFormat;
 }

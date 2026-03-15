@@ -75,7 +75,7 @@ export default function BlogPost({ title, content }: BlogPostProps) {
 
 | Parameter                | Type                                  | Default   | Description                        |
 | ------------------------ | ------------------------------------- | --------- | ---------------------------------- |
-| `text`                   | `string`                              | —         | The content to analyze.            |
+| `text`                   | `string`                              | -         | The content to analyze.            |
 | `options.wordsPerMinute` | `number`                              | `200`     | Reading speed in words per minute. |
 | `options.format`         | `"plain"` \| `"html"` \| `"markdown"` | `"plain"` | Content format for preprocessing.  |
 
@@ -105,7 +105,7 @@ The default of **200 words per minute** is based on the average silent reading s
 
 A comprehensive meta-analysis by Marc Brysbaert (2019), ["How many words do we read per minute? A review and meta-analysis of reading rate"](https://doi.org/10.3758/s13423-019-01698-4), reviewed 190 studies involving 18,573 participants and found that the average silent reading rate for non-fiction is **238 wpm**, while fiction averages **260 wpm**. The commonly cited figure of 200 wpm represents a conservative lower bound that accounts for varying text complexity and reader populations.
 
-Popular platforms like **Medium** use higher values such as **275 wpm**. The `wordsPerMinute` option exists precisely to let you tune this to your audience — use a lower value for technical or academic content and a higher value for lighter prose.
+Popular platforms like **Medium** use higher values such as **275 wpm**. The `wordsPerMinute` option exists precisely to let you tune this to your audience -use a lower value for technical or academic content and a higher value for lighter prose.
 
 ## License
 

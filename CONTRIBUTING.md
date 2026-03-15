@@ -30,7 +30,7 @@ Thank you for your interest in contributing!
    ```
 
 5. **Commit your changes** following the [Conventional Commits](https://www.conventionalcommits.org/) specification.
-   All commits are validated by **commitlint** via a Git hook — commits that don't follow the convention will be rejected.
+   All commits are validated by **commitlint** via a Git hook -commits that don't follow the convention will be rejected.
 
    Examples of valid commit messages:
 
@@ -47,4 +47,4 @@ Thank you for your interest in contributing!
 - Write TypeScript.
 - Keep changes focused and minimal.
 - Add JSDoc comments for any new public exports.
-- Code is automatically formatted by **Prettier** via **lint-staged** on every commit — no manual formatting needed.
+- Code is automatically formatted by **Prettier** via **lint-staged** on every commit -no manual formatting needed.
