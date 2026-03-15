@@ -48,7 +48,7 @@ const LOCALE_TEMPLATES: Record<SupportedLocale, string> = {
  */
 export interface ReadingTimeOptions {
   /**
-   * Reading speed in words per minute. Defaults to {@link DEFAULT_WORDS_PER_MINUTE} (200).
+   * Reading speed in words per minute. Defaults to {@link DEFAULT_WORDS_PER_MINUTE} (260).
    */
   wordsPerMinute?: number;
 
@@ -109,9 +109,9 @@ export interface ReadingTimeResult {
  * Based on the average silent reading speed for adults as reported in
  * academic literature. See Brysbaert (2019) for a comprehensive meta-analysis.
  *
- * @see {@link https://doi.org/10.3758/s13423-019-01698-4}
+ * @see {@link https://doi.org/10.1016/j.jml.2019.104047}
  */
-export const DEFAULT_WORDS_PER_MINUTE = 200;
+export const DEFAULT_WORDS_PER_MINUTE = 260;
 
 /**
  * Strips Markdown syntax from the given text using remark and strip-markdown.

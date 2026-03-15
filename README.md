@@ -92,7 +92,7 @@ export default function BlogPost({ title, content }: BlogPostProps) {
 | Parameter                | Type                                  | Default   | Description                        |
 | ------------------------ | ------------------------------------- | --------- | ---------------------------------- |
 | `text`                   | `string`                              | -         | The content to analyze.            |
-| `options.wordsPerMinute` | `number`                              | `200`     | Reading speed in words per minute. |
+| `options.wordsPerMinute` | `number`                              | `260`     | Reading speed in words per minute. |
 | `options.format`         | `"plain"` \| `"html"` \| `"markdown"` | `"plain"` | Content format for preprocessing.  |
 | `options.locale`         | `SupportedLocale`                     | `"en_US"` | Locale for the `text` field.       |
 
@@ -107,7 +107,7 @@ export default function BlogPost({ title, content }: BlogPostProps) {
 
 ### `DEFAULT_WORDS_PER_MINUTE`
 
-Exported constant equal to `200`.
+Exported constant equal to `260`.
 
 ### `SupportedLocale`
 
@@ -128,13 +128,9 @@ Union type of supported locale codes:
 - **JavaScript (CJS)** - `const { readingTime } = require("@napolux/simple-reading-time")`
 - **Node.js** - works out of the box, CJS and ESM
 
-## Why 200 words per minute?
+## Why 260 words per minute?
 
-The default of **200 words per minute** is based on the average silent reading speed for adults as established in academic literature.
-
-A comprehensive meta-analysis by Marc Brysbaert (2019), ["How many words do we read per minute? A review and meta-analysis of reading rate"](https://doi.org/10.3758/s13423-019-01698-4), reviewed 190 studies involving 18,573 participants and found that the average silent reading rate for non-fiction is **238 wpm**, while fiction averages **260 wpm**. The commonly cited figure of 200 wpm represents a conservative lower bound that accounts for varying text complexity and reader populations.
-
-Popular platforms like **Medium** use higher values such as **275 wpm**. The `wordsPerMinute` option exists precisely to let you tune this to your audience -use a lower value for technical or academic content and a higher value for lighter prose.
+The default of **260 words per minute** is based on the meta-analysis by Marc Brysbaert (2019), ["How many words do we read per minute? A review and meta-analysis of reading rate"](https://doi.org/10.1016/j.jml.2019.104047). Popular platforms like **Medium** use **275 wpm**. Use the `wordsPerMinute` option to tune this to your audience.
 
 ## License
 
