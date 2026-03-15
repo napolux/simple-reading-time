@@ -14,11 +14,11 @@ export type ContentFormat = "plain" | "html" | "markdown";
 /**
  * Supported locale codes for the human-readable `text` field.
  *
- * - `"en_US"` - English (default): "3 min read"
- * - `"it_IT"` - Italian: "3 min di lettura"
+ * - `"en_US"` - English (default): "3 min. read"
+ * - `"it_IT"` - Italian: "3 min. di lettura"
  * - `"fr_FR"` - French: "3 min de lecture"
  * - `"de_DE"` - German: "3 Min. Lesezeit"
- * - `"es_ES"` - Spanish: "3 min de lectura"
+ * - `"es_ES"` - Spanish: "3 min. de lectura"
  */
 export type SupportedLocale = "en_US" | "it_IT" | "fr_FR" | "de_DE" | "es_ES";
 
@@ -28,11 +28,11 @@ export type SupportedLocale = "en_US" | "it_IT" | "fr_FR" | "de_DE" | "es_ES";
  * @internal
  */
 const LOCALE_TEMPLATES: Record<SupportedLocale, string> = {
-  en_US: "{minutes} min read",
-  it_IT: "{minutes} min di lettura",
+  en_US: "{minutes} min. read",
+  it_IT: "{minutes} min. di lettura",
   fr_FR: "{minutes} min de lecture",
   de_DE: "{minutes} Min. Lesezeit",
-  es_ES: "{minutes} min de lectura",
+  es_ES: "{minutes} min. de lectura",
 };
 
 /**
@@ -70,7 +70,7 @@ export interface ReadingTimeOptions {
    * @example
    * ```ts
    * readingTime("some text", { locale: "it_IT" });
-   * // => { ..., text: "1 min di lettura" }
+   * // => { ..., text: "1 min. di lettura" }
    * ```
    */
   locale?: SupportedLocale;
@@ -85,7 +85,7 @@ export interface ReadingTimeOptions {
  *   minutes: 3,
  *   seconds: 180,
  *   words: 600,
- *   text: "3 min read",
+ *   text: "3 min. read",
  * };
  * ```
  */
@@ -99,7 +99,7 @@ export interface ReadingTimeResult {
   /** Total number of words counted after preprocessing. */
   words: number;
 
-  /** Human-readable reading time string, e.g. `"3 min read"`. */
+  /** Human-readable reading time string, e.g. `"3 min. read"`. */
   text: string;
 }
 
@@ -147,7 +147,7 @@ function countWords(text: string): number {
  * import { readingTime } from "@napolux/simple-reading-time";
  *
  * const result = readingTime("some plain text");
- * // => { minutes: 1, seconds: 1, words: 3, text: "1 min read" }
+ * // => { minutes: 1, seconds: 1, words: 3, text: "1 min. read" }
  * ```
  *
  * @example HTML content
@@ -168,7 +168,7 @@ function countWords(text: string): number {
  * @example Localized output
  * ```ts
  * const result = readingTime("some text", { locale: "it_IT" });
- * // => { ..., text: "1 min di lettura" }
+ * // => { ..., text: "1 min. di lettura" }
  * ```
  */
 export function readingTime(

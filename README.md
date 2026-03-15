@@ -22,28 +22,28 @@ import { readingTime } from "@napolux/simple-reading-time";
 
 ```ts
 const result = readingTime("some plain text");
-// => { minutes: 1, seconds: 1, words: 3, text: "1 min read" }
+// => { minutes: 1, seconds: 1, words: 3, text: "1 min. read" }
 ```
 
 ### HTML
 
 ```ts
 const result = readingTime("<p>some html</p>", { format: "html" });
-// => { minutes: 1, seconds: 1, words: 2, text: "1 min read" }
+// => { minutes: 1, seconds: 1, words: 2, text: "1 min. read" }
 ```
 
 ### Markdown
 
 ```ts
 const result = readingTime("## some markdown", { format: "markdown" });
-// => { minutes: 1, seconds: 1, words: 2, text: "1 min read" }
+// => { minutes: 1, seconds: 1, words: 2, text: "1 min. read" }
 ```
 
 ### Custom reading speed
 
 ```ts
 const result = readingTime("some text", { wordsPerMinute: 250 });
-// => { minutes: 1, seconds: 0, words: 2, text: "1 min read" }
+// => { minutes: 1, seconds: 0, words: 2, text: "1 min. read" }
 ```
 
 ### Localized output
@@ -53,13 +53,13 @@ readingTime("du texte en francais", { locale: "fr_FR" });
 // => { minutes: 1, seconds: 1, words: 4, text: "1 min de lecture" }
 
 readingTime("un testo in italiano", { locale: "it_IT" });
-// => { minutes: 1, seconds: 1, words: 4, text: "1 min di lettura" }
+// => { minutes: 1, seconds: 1, words: 4, text: "1 min. di lettura" }
 
 readingTime("ein deutscher Text", { locale: "de_DE" });
 // => { minutes: 1, seconds: 1, words: 3, text: "1 Min. Lesezeit" }
 
 readingTime("un texto en espanol", { locale: "es_ES" });
-// => { minutes: 1, seconds: 1, words: 4, text: "1 min de lectura" }
+// => { minutes: 1, seconds: 1, words: 4, text: "1 min. de lectura" }
 ```
 
 ### Next.js blog post component
@@ -103,7 +103,7 @@ export default function BlogPost({ title, content }: BlogPostProps) {
 | `minutes` | `number` | Estimated reading time (rounded up, minutes). |
 | `seconds` | `number` | Estimated reading time in total seconds.      |
 | `words`   | `number` | Total word count after preprocessing.         |
-| `text`    | `string` | Human-readable string, e.g. `"3 min read"`.   |
+| `text`    | `string` | Human-readable string, e.g. `"3 min. read"`.  |
 
 ### `DEFAULT_WORDS_PER_MINUTE`
 
@@ -113,13 +113,13 @@ Exported constant equal to `260`.
 
 Union type of supported locale codes:
 
-| Locale    | Language | Example output       |
-| --------- | -------- | -------------------- |
-| `"en_US"` | English  | `"3 min read"`       |
-| `"it_IT"` | Italian  | `"3 min di lettura"` |
-| `"fr_FR"` | French   | `"3 min de lecture"` |
-| `"de_DE"` | German   | `"3 Min. Lesezeit"`  |
-| `"es_ES"` | Spanish  | `"3 min de lectura"` |
+| Locale    | Language | Example output        |
+| --------- | -------- | --------------------- |
+| `"en_US"` | English  | `"3 min. read"`       |
+| `"it_IT"` | Italian  | `"3 min. di lettura"` |
+| `"fr_FR"` | French   | `"3 min de lecture"`  |
+| `"de_DE"` | German   | `"3 Min. Lesezeit"`   |
+| `"es_ES"` | Spanish  | `"3 min. de lectura"` |
 
 ## Works everywhere
 
